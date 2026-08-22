@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact — EagleCatch</title>
+    <meta
+      name="description"
+      content="Reach the EagleCatch desk to report or claim a lost item."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">
+            <img src="assets\images\logo.png" alt="Brand Logo" />
+          </span>
+          <span>
+            <span class="brand-name">EagleCatch</span><br />
+            <span class="brand-sub">ASKI Lost &amp; Found</span>
+          </span>
+        </a>
+        <nav class="nav" id="nav">
+          <a href="index.html">Home</a><a href="find.html">Find</a
+          ><a href="about.html">About</a
+          ><a href="contact.html" class="active">Contact</a>
+        </nav>
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Toggle navigation"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          >
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+      </div>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="container">
+          <span class="eyebrow">Contact</span>
+          <h1>
+            Talk to the
+            <span class="text-gradient-brand">EagleCatch team!</span>
+          </h1>
+          <p class="lead">
+            Report a found item, follow up on a claim, or send us feedback.
+          </p>
+        </div>
+      </section>
+
+      <section class="section container">
+        <div class="grid grid-2">
+          <form class="card form-grid" id="contactForm">
+            <h3>Send a message</h3>
+            <div class="field">
+              <label for="name">Full name</label
+              ><input class="input" id="name" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label
+              ><input class="input" id="email" type="email" required />
+            </div>
+            <div class="field">
+              <label for="subject">Subject</label
+              ><input class="input" id="subject" required />
+            </div>
+            <div class="field">
+              <label for="message">Message</label
+              ><textarea class="textarea" id="message" required></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Send message</button>
+            <p class="text-muted" id="formStatus" hidden>
+              Thanks! Your message has been recorded.
+            </p>
+          </form>
+
+          <div class="stack">
+            <div class="card">
+              <h3>The team</h3>
+              <div class="stack mt-8">
+                <div class="people">
+                  <div class="avatar">M</div>
+                  <div>
+                    <strong>Marianne</strong><br /><span class="text-muted"
+                      >"Progress, not perfection."</span
+                    >
+                  </div>
+                </div>
+                <div class="people">
+                  <div class="avatar">J</div>
+                  <div>
+                    <strong>Jed</strong><br /><span class="text-muted"
+                      >"You never know unless you try"</span
+                    >
+                  </div>
+                </div>
+                <div class="people">
+                  <div class="avatar">N</div>
+                  <div>
+                    <strong>Nickos</strong><br /><span class="text-muted"
+                      >"If I won't die doing it, I'll do it."</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <h3>Where to find us</h3>
+              <ul class="meta-list">
+                <li>
+                  <span>Desk</span><span>12-Thomas & Andrew, Old Building</span>
+                </li>
+                <li>
+                  <span>Hours</span><span>Mon-Fri, 12:30pm - 5:00pm</span>
+                </li>
+                <li><span>Email</span><span>eaglecatch@aski.edu.ph</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <span class="tag">EagleCatch &middot; ASKI</span>
+        <span
+          >&copy; 2026 ASKI Skills and Knowledge Institute. For ASKIans, By
+          ASKIans.</span
+        >
+      </div>
+    </footer>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/contact.js"></script>
+  </body>
+</html>

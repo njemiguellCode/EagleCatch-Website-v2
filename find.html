@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Find an item — EagleCatch</title>
+    <meta
+      name="description"
+      content="Search the ASKI lost and found database by ID, name or category."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">
+            <img src="assets\images\logo.png" alt="Brand Logo" />
+          </span>
+          <span>
+            <span class="brand-name">EagleCatch</span><br />
+            <span class="brand-sub">ASKI Lost &amp; Found</span>
+          </span>
+        </a>
+        <nav class="nav" id="nav">
+          <a href="index.html">Home</a
+          ><a href="find.html" class="active">Find</a
+          ><a href="about.html">About</a><a href="contact.html">Contact</a>
+        </nav>
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Toggle navigation"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          >
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+      </div>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="container">
+          <span class="eyebrow">Search</span>
+          <h1>Find your <span class="text-gradient-brand">item</span></h1>
+          <p class="lead">
+            Search by item ID, name or category. Leave the field empty to browse
+            everything.
+          </p>
+        </div>
+      </section>
+
+      <section class="section container">
+        <form class="filters" id="findForm">
+          <div class="field" style="min-width: 18rem">
+            <label for="q">Search</label>
+            <input
+              class="input"
+              id="q"
+              placeholder="ASKI-000123, jacket, bottle..."
+            />
+          </div>
+          <div class="field">
+            <label for="cat">Category</label>
+            <select class="select" id="cat"></select>
+          </div>
+          <button class="btn btn-primary" type="submit">Search</button>
+          <button class="btn btn-outline" type="button" id="resetBtn">
+            Reset
+          </button>
+        </form>
+        <div class="grid grid-3 mt-8" id="results"></div>
+        <p class="empty" id="empty" hidden>No items matched your search.</p>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <span class="tag">EagleCatch &middot; ASKI</span>
+        <span
+          >&copy; 2026 ASKI Skills and Knowledge Institute. For ASKIans, By
+          ASKIans.</span
+        >
+      </div>
+    </footer>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/find.js"></script>
+  </body>
+</html>

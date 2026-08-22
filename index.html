@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EagleCatch — ASKI Lost &amp; Found</title>
+    <meta
+      name="description"
+      content="Search, report and claim lost items at ASKI with EagleCatch."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">
+            <img src="assets\images\logo.png" alt="Brand Logo" />
+          </span>
+            <span class="brand-name">EagleCatch</span><br />
+            <span class="brand-sub">ASKI Lost &amp; Found</span>
+          </span>
+        </a>
+        <nav class="nav" id="nav">
+          <a href="index.html" class="active">Home</a
+          ><a href="find.html">Find</a><a href="about.html">About</a
+          ><a href="contact.html">Contact</a>
+        </nav>
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Toggle navigation"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          >
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+      </div>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="container">
+          <span class="eyebrow">Lost something on campus?</span>
+          <h1>
+            Every lost item finds its way back to its
+            <span class="text-gradient-brand">ASKIan</span>.
+          </h1>
+          <p class="lead">
+            EagleCatch is the official lost &amp; found desk of ASKI. Search by
+            item ID, browse fresh finds, and claim what's yours in minutes.
+          </p>
+          <form class="search-box mt-8" id="heroSearch">
+            <input
+              class="input"
+              id="heroQuery"
+              placeholder="Enter item ID e.g. ASKI-000123"
+              aria-label="Search items"
+            />
+            <button class="btn btn-primary" type="submit">Search</button>
+          </form>
+          <div class="btn-group">
+            <a class="btn btn-outline" href="find.html">Browse all items</a>
+            <a class="btn btn-ghost" href="contact.html">Report a found item</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section container">
+        <h2 class="section-title">How EagleCatch works</h2>
+        <p class="section-lead">
+          Three simple steps between a lost item and a happy owner.
+        </p>
+        <div class="grid grid-3 mt-8">
+          <article class="card card-hover">
+            <div class="icon-tile">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <circle cx="11" cy="11" r="7" />
+                <path d="m20 20-3.5-3.5" />
+              </svg>
+            </div>
+            <h3>ID lookup</h3>
+            <p class="text-muted">
+              Every turned-in item gets a unique ASKI ID. Type it in and get an
+              instant match.
+            </p>
+          </article>
+          <article class="card card-hover">
+            <div class="icon-tile">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </div>
+            <h3>Verified claims</h3>
+            <p class="text-muted">
+              Claims are checked by the SSG desk so items only go back to their
+              real owners.
+            </p>
+          </article>
+          <article class="card card-hover">
+            <div class="icon-tile">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <rect x="3" y="5" width="18" height="16" rx="3" />
+                <path d="M8 3v4M16 3v4M3 11h18" />
+              </svg>
+            </div>
+            <h3>Daily updates</h3>
+            <p class="text-muted">
+              New finds are posted ASAP. so the list is always current.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section container">
+        <h2 class="section-title">Fresh finds</h2>
+        <p class="section-lead">
+          The most recent items turned in to the EagleCatch desk.
+        </p>
+        <div class="grid grid-3 mt-8" id="freshFinds"></div>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="find.html">See all items</a>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <span class="tag">EagleCatch &middot; ASKI</span>
+        <span
+          >&copy; 2026 ASKI Skills and Knowledge Institute. For ASKIans, By
+          ASKIans.</span
+        >
+      </div>
+    </footer>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/home.js"></script>
+  </body>
+</html>
