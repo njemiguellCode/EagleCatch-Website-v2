@@ -70,7 +70,14 @@
   if (n) n.appendChild(toggle);
 })();
 
+function esc(s) {
+  var d = document.createElement("div");
+  d.appendChild(document.createTextNode(s));
+  return d.innerHTML;
+}
+
 window.EC = {
+  esc: esc,
   badgeClass: function (status) {
     if (status === "Claimed") return "badge badge-claimed";
     if (status === "Found") return "badge badge-found";
@@ -93,24 +100,24 @@ window.EC = {
       encodeURIComponent(it.id) +
       '">' +
       '<div class="row"><span class="item-id">' +
-      it.id +
+      esc(it.id) +
       "</span>" +
       '<span class="' +
       window.EC.badgeClass(it.status) +
       '">' +
-      it.status +
+      esc(it.status) +
       "</span></div>" +
       '<h3 class="item-title">' +
-      it.name +
+      esc(it.name) +
       "</h3>" +
       '<p class="text-muted" style="margin:0">' +
-      it.description +
+      esc(it.description) +
       "</p>" +
       '<div class="row"><span class="text-muted" style="font-size:.8rem">' +
-      it.location +
+      esc(it.location) +
       "</span>" +
       '<span class="text-muted" style="font-size:.8rem">' +
-      window.EC.formatDate(it.dateFound) +
+      esc(window.EC.formatDate(it.dateFound)) +
       "</span></div>" +
       "</a>"
     );
