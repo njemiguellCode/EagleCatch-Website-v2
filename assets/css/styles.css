@@ -218,9 +218,9 @@ img {
 .brand-mark {
   display: grid;
   place-items: center;
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.5rem;
   overflow: hidden;
   border: none;
   background: transparent;
@@ -466,8 +466,8 @@ img {
 }
 .hero-logo-blob {
   position: relative;
-  width: 280px;
-  height: 280px;
+  width: 340px;
+  height: 340px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -480,8 +480,8 @@ img {
   animation: blob-rotate 20s linear infinite;
 }
 .hero-logo-circle {
-  width: 200px;
-  height: 200px;
+  width: 260px;
+  height: 260px;
   border-radius: 50%;
   background: var(--hero-logo-bg);
   display: flex;
@@ -493,8 +493,8 @@ img {
   transition: background 0.4s ease, box-shadow 0.4s ease;
 }
 .hero-logo-circle img {
-  width: 140px;
-  height: 140px;
+  width: 190px;
+  height: 190px;
   object-fit: contain;
   filter: drop-shadow(0 4px 12px oklch(0 0 0 / 0.3));
 }
@@ -612,16 +612,16 @@ img {
     margin-bottom: 1rem;
   }
   .hero-logo-blob {
-    width: 200px;
-    height: 200px;
+    width: 240px;
+    height: 240px;
   }
   .hero-logo-circle {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
   }
   .hero-logo-circle img {
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 130px;
   }
   .hero-blob-1 {
     width: 300px;
