@@ -5,13 +5,13 @@ window.ITEMS = [
     category: "Accessories",
     status: "Available",
     description:
-      "Black resin strap digital watch with a slightly scratched face. Found near the covered court bleachers.",
+      "Black resin strap digital watch, slightly scratched. Found near the covered court bleachers.",
     location: "Covered Court",
     dateFound: "2026-08-11",
     additional: {
       Brand: "Casio",
       Color: "Black",
-      "Turned in by": "Grade 11 - Peter",
+      "Turned in by": "Grade 12 - Peter",
     },
   },
   {
@@ -20,7 +20,7 @@ window.ITEMS = [
     category: "Bottles",
     status: "Available",
     description:
-      "1L navy tumbler with a sticker of an eagle on the side. Left at the canteen counter.",
+      "1L navy tumbler with a stickers on the side. Left at the canteen table.",
     location: "School Canteen",
     dateFound: "2026-08-13",
     additional: {
@@ -35,7 +35,7 @@ window.ITEMS = [
     status: "Claimed",
     description:
       "Casio fx-991EX with the initials 'J.C.' written on the back cover.",
-    location: "Room 204",
+    location: "Room of 11-DAN",
     dateFound: "2026-08-05",
     additional: {
       Model: "fx-991EX",
@@ -74,8 +74,7 @@ window.ITEMS = [
     name: "USB Flash Drive 32GB",
     category: "Electronics",
     status: "Available",
-    description:
-      "Red 32GB flash drive with a keychain loop. Contains school files only.",
+    description: "Red 32GB flash drive. Contains school files only.",
     location: "Computer Laboratory",
     dateFound: "2026-08-18",
     additional: {
