@@ -10,14 +10,31 @@
     grid.innerHTML = latest.map(window.EC.itemCard).join("");
   }
 
+  // Populate hero category dropdown
+  var heroCat = document.getElementById("heroCat");
+  if (heroCat) {
+    var cats = ["All"].concat(
+      (window.ITEMS || [])
+        .map(function (i) { return i.category; })
+        .filter(function (v, i, a) { return a.indexOf(v) === i; })
+        .sort()
+    );
+    heroCat.innerHTML = cats.map(function (c) {
+      return "<option>" + c + "</option>";
+    }).join("");
+  }
+
   // Hero search form submit
   var form = document.getElementById("heroSearch");
   if (form)
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var v = document.getElementById("heroQuery").value.trim();
-      window.location.href =
-        "find.html" + (v ? "?q=" + encodeURIComponent(v) : "");
+      var cat = heroCat ? heroCat.value : "All";
+      var params = [];
+      if (v) params.push("q=" + encodeURIComponent(v));
+      if (cat && cat !== "All") params.push("cat=" + encodeURIComponent(cat));
+      window.location.href = "find.html" + (params.length ? "?" + params.join("&") : "");
     });
 
   // Autocomplete

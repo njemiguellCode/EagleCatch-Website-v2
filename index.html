@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en" class="dark">
   <head>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>EagleCatch — ASKI Lost &amp; Found</title>
@@ -14,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/styles.css?v=3" />
   </head>
   <body>
     <header class="site-header">
@@ -76,13 +77,19 @@
             </p>
             <div class="search-wrapper mt-8">
               <form class="search-box" id="heroSearch">
-                <input
-                  class="input"
-                  id="heroQuery"
-                  placeholder="Search by name or ID e.g. ASKI-000123, jacket..."
-                  aria-label="Search items"
-                  autocomplete="off"
-                />
+                <div class="search-input-wrap">
+                  <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                  <input
+                    class="input search-input"
+                    id="heroQuery"
+                    placeholder="Search by name or ID e.g. ASKI-000123, jacket..."
+                    aria-label="Search items"
+                    autocomplete="off"
+                  />
+                </div>
+                <select class="select hero-cat-select" id="heroCat" aria-label="Filter by category">
+                  <option>All</option>
+                </select>
                 <button class="btn btn-primary" type="submit">Search</button>
               </form>
               <div class="autocomplete" id="heroAutocomplete" hidden></div>
@@ -105,72 +112,56 @@
         </div>
       </section>
 
+      <div class="stats-section">
+        <div class="container">
+          <div class="stats-divider-top"></div>
+          <div class="stats-row" id="statsRow">
+            <div class="stat-item">
+              <div class="stat-number" data-target="120">0</div>
+              <div class="stat-label">Items Found</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number" data-target="85">0</div>
+              <div class="stat-label">Claims Completed</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number" data-target="340">0</div>
+              <div class="stat-label">Students Served</div>
+            </div>
+          </div>
+          <div class="stats-divider-bottom"></div>
+        </div>
+      </div>
+
       <section class="section container">
         <h2 class="section-title">How EagleCatch works</h2>
         <p class="section-lead">
           Three simple steps between a lost item and a happy owner.
-        </p>
-        <div class="grid grid-3 mt-8">
-          <article class="card card-hover">
-            <div class="icon-tile">
-              <svg
-                viewBox="0 0 24 24"
-                width="20"
-                height="20"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-              >
-                <circle cx="11" cy="11" r="7" />
-                <path d="m20 20-3.5-3.5" />
-              </svg>
-            </div>
+        </p>        <div class="steps-row mt-8">
+          <article class="card card-hover step-card">
+            <div class="step-number">1</div>
             <h3>ID lookup</h3>
             <p class="text-muted">
               Every turned-in item gets a unique ASKI ID. Type it in and get an
               instant match. (Example: "ASKI-000123")
             </p>
           </article>
-          <article class="card card-hover">
-            <div class="icon-tile">
-              <svg
-                viewBox="0 0 24 24"
-                width="20"
-                height="20"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M20 6 9 17l-5-5" />
-              </svg>
-            </div>
+          <div class="step-connector" aria-hidden="true"></div>
+          <article class="card card-hover step-card">
+            <div class="step-number">2</div>
             <h3>Verified claims</h3>
             <p class="text-muted">
               Claims are checked by the SSG and EagleCatch team so items only go back to their
               real owners.
             </p>
           </article>
-          <article class="card card-hover">
-            <div class="icon-tile">
-              <svg
-                viewBox="0 0 24 24"
-                width="20"
-                height="20"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-              >
-                <rect x="3" y="5" width="18" height="16" rx="3" />
-                <path d="M8 3v4M16 3v4M3 11h18" />
-              </svg>
-            </div>
+          <div class="step-connector" aria-hidden="true"></div>
+          <article class="card card-hover step-card">
+            <div class="step-number">3</div>
             <h3>Daily updates</h3>
             <p class="text-muted">
-              New finds are posted ASAP. so the list is always thoroughly checked, updated and evaluated by the SSG.
+              New finds are posted ASAP. so the list is always thoroughly checked, updated
+              and evaluated by the SSG.
             </p>
           </article>
         </div>
@@ -197,8 +188,8 @@
       </div>
     </footer>
     <script src="assets/js/data.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/home.js"></script>
+    <script src="assets/js/main.js?v=4"></script>
+    <script src="assets/js/home.js?v=5"></script>
 
     <a href="contact.html" class="floating-cta" aria-label="Report a found item">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>

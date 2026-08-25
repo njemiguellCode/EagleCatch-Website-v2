@@ -28,6 +28,7 @@
 
   var params = new URLSearchParams(window.location.search);
   if (params.get("q")) q.value = params.get("q");
+  if (params.get("cat")) cat.value = params.get("cat");
 
   document.getElementById("findForm").addEventListener("submit", function (e) {
     e.preventDefault();

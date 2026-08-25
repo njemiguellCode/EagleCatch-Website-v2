@@ -76,12 +76,62 @@ function esc(s) {
   return d.innerHTML;
 }
 
+// Animated stat counters (home page only)
+(function () {
+  var row = document.getElementById("statsRow");
+  if (!row) return;
+  var nums = row.querySelectorAll(".stat-number[data-target]");
+  if (!nums.length) return;
+
+  var observed = false;
+  function animateCountUp() {
+    if (observed) return;
+    observed = true;
+    nums.forEach(function (el) {
+      var target = parseInt(el.getAttribute("data-target"), 10);
+      if (isNaN(target)) return;
+      var duration = 1500;
+      var start = performance.now();
+      function step(now) {
+        var progress = Math.min((now - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        var current = Math.round(eased * target);
+        el.textContent = current + (target >= 100 ? "+" : "");
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      el.textContent = "0";
+      requestAnimationFrame(step);
+    });
+  }
+
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        animateCountUp();
+        io.disconnect();
+      }
+    }, { threshold: 0.1, rootMargin: '50px' });
+    io.observe(row);
+    // Fallback: if already in view, animate after a short delay
+    setTimeout(function () {
+      if (!observed) animateCountUp();
+    }, 500);
+  } else {
+    animateCountUp();
+  }
+})();
+
 window.EC = {
   esc: esc,
   badgeClass: function (status) {
     if (status === "Claimed") return "badge badge-claimed";
     if (status === "Found") return "badge badge-found";
     return "badge badge-lost";
+  },
+  statusStripClass: function (status) {
+    if (status === "Found") return "strip-found";
+    if (status === "Claimed") return "strip-claimed";
+    return "strip-available";
   },
   formatDate: function (iso) {
     var d = new Date(iso + "T00:00:00");
@@ -93,10 +143,13 @@ window.EC = {
           day: "numeric",
         });
   },
+  pinIcon: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;opacity:.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+  chevronIcon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.4;transition:opacity .2s"><path d="M9 18l6-6-6-6"/></svg>',
   itemCard: function (it) {
+    var stripClass = window.EC.statusStripClass(it.status);
     return (
       "" +
-      '<a class="card card-hover item-card" href="item.html?id=' +
+      '<a class="card card-hover item-card ' + stripClass + '" href="item.html?id=' +
       encodeURIComponent(it.id) +
       '">' +
       '<div class="row"><span class="item-id">' +
@@ -110,14 +163,16 @@ window.EC = {
       '<h3 class="item-title">' +
       esc(it.name) +
       "</h3>" +
-      '<p class="text-muted" style="margin:0">' +
+      '<p class="text-muted" style="margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">' +
       esc(it.description) +
       "</p>" +
-      '<div class="row"><span class="text-muted" style="font-size:.8rem">' +
+      '<div class="row item-card-footer"><span class="text-muted item-card-location">' +
+      window.EC.pinIcon +
       esc(it.location) +
       "</span>" +
-      '<span class="text-muted" style="font-size:.8rem">' +
+      '<span class="text-muted item-card-date">' +
       esc(window.EC.formatDate(it.dateFound)) +
+      window.EC.chevronIcon +
       "</span></div>" +
       "</a>"
     );
