@@ -1,6 +1,71 @@
-127.0.0.1 - - [25/Aug/2026 10:04:27] "GET / HTTP/1.1" 200 -
-127.0.0.1 - - [25/Aug/2026 10:04:52] "GET /index.html HTTP/1.1" 200 -
-127.0.0.1 - - [25/Aug/2026 10:05:08] "GET /index.html?v=2 HTTP/1.1" 200 -
-127.0.0.1 - - [25/Aug/2026 10:06:14] "GET /assets/js/main.js HTTP/1.1" 200 -
-127.0.0.1 - - [25/Aug/2026 10:06:14] "GET /assets/js/main.js HTTP/1.1" 200 -
-127.0.0.1 - - [25/Aug/2026 10:06:21] "GET /assets/js/main.js HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('::ffff:127.0.0.1', 60469, 0, 0)
+Traceback (most recent call last):
+  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\http\server.py", line 1422, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                             directory=args.directory)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\http\server.py", line 732, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\http\server.py", line 496, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\http\server.py", line 464, in handle_one_request
+    self.raw_requestline = self.rfile.readline(65537)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+----------------------------------------
+::1 - - [01/Sep/2026 12:24:53] "GET / HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('::ffff:127.0.0.1', 60471, 0, 0)
+Traceback (most recent call last):
+  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\http\server.py", line 1422, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                             directory=args.directory)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\http\server.py", line 732, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\http\server.py", line 496, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\http\server.py", line 464, in handle_one_request
+    self.raw_requestline = self.rfile.readline(65537)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^
+::1 - - [01/Sep/2026 12:24:53] "GET / HTTP/1.1" 200 -
+  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+----------------------------------------
+::1 - - [01/Sep/2026 12:24:55] "GET / HTTP/1.1" 304 -
+::1 - - [01/Sep/2026 12:25:06] "GET /index.html HTTP/1.1" 304 -
+::1 - - [01/Sep/2026 12:25:35] "GET /assets/css/styles.css HTTP/1.1" 200 -
+::1 - - [01/Sep/2026 12:26:14] "GET /index.html HTTP/1.1" 200 -
+::1 - - [01/Sep/2026 12:26:14] "GET /assets/css/styles.css?v=4 HTTP/1.1" 200 -
+::1 - - [01/Sep/2026 12:26:14] "GET /assets/js/main.js?v=5 HTTP/1.1" 200 -
+::1 - - [01/Sep/2026 12:28:47] "GET /contact.html HTTP/1.1" 200 -
+::1 - - [01/Sep/2026 12:28:47] "GET /assets/js/main.js?v=5 HTTP/1.1" 304 -
+::1 - - [01/Sep/2026 12:28:47] "GET /assets/css/styles.css?v=4 HTTP/1.1" 304 -
+::1 - - [01/Sep/2026 12:29:41] "GET /report.html HTTP/1.1" 200 -
+::1 - - [01/Sep/2026 12:29:41] "GET /assets/js/report.js HTTP/1.1" 304 -
+::1 - - [01/Sep/2026 12:30:21] "GET /report.html HTTP/1.1" 304 -
+::1 - - [01/Sep/2026 12:30:21] "GET /assets/css/styles.css?v=4 HTTP/1.1" 304 -

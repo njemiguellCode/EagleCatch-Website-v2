@@ -80,8 +80,24 @@ function esc(s) {
 (function () {
   var row = document.getElementById("statsRow");
   if (!row) return;
-  var nums = row.querySelectorAll(".stat-number[data-target]");
+  var nums = row.querySelectorAll(".stat-number[data-stat]");
   if (!nums.length) return;
+
+  // Calculate stats from window.ITEMS
+  var items = window.ITEMS || [];
+  var stats = {
+    total: items.length,
+    claimed: items.filter(function (i) { return i.status === "Claimed"; }).length,
+    categories: items.map(function (i) { return i.category; }).filter(function (v, i, a) { return a.indexOf(v) === i; }).length
+  };
+
+  // Set data-target from calculated stats
+  nums.forEach(function (el) {
+    var key = el.getAttribute("data-stat");
+    if (key && stats[key] !== undefined) {
+      el.setAttribute("data-target", stats[key]);
+    }
+  });
 
   var observed = false;
   function animateCountUp() {

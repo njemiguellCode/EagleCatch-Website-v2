@@ -3,6 +3,8 @@
   var empty = document.getElementById("empty");
   var q = document.getElementById("q");
   var cat = document.getElementById("cat");
+  var sort = document.getElementById("sort");
+  var resultCount = document.getElementById("resultCount");
 
   var cats = ["All"].concat(
     (window.ITEMS || [])
@@ -20,25 +22,53 @@
     })
     .join("");
 
+  function applySort(list) {
+    var v = sort ? sort.value : "newest";
+    var copy = list.slice();
+    if (v === "newest") {
+      copy.sort(function (a, b) { return b.dateFound.localeCompare(a.dateFound); });
+    } else if (v === "oldest") {
+      copy.sort(function (a, b) { return a.dateFound.localeCompare(b.dateFound); });
+    } else if (v === "az") {
+      copy.sort(function (a, b) { return a.name.localeCompare(b.name); });
+    } else if (v === "za") {
+      copy.sort(function (a, b) { return b.name.localeCompare(a.name); });
+    }
+    return copy;
+  }
+
   function render() {
-    var list = window.EC.search(q.value, cat.value);
+    var all = window.EC.search(q.value, cat.value);
+    var list = applySort(all);
     results.innerHTML = list.map(window.EC.itemCard).join("");
     empty.hidden = list.length > 0;
+    if (resultCount) {
+      var total = (window.ITEMS || []).length;
+      if (all.length === total) {
+        resultCount.textContent = "Showing all " + total + " items";
+      } else {
+        resultCount.textContent = "Showing " + all.length + " of " + total + " items";
+      }
+      resultCount.hidden = list.length === 0;
+    }
   }
 
   var params = new URLSearchParams(window.location.search);
   if (params.get("q")) q.value = params.get("q");
   if (params.get("cat")) cat.value = params.get("cat");
+  if (params.get("sort") && sort) sort.value = params.get("sort");
 
   document.getElementById("findForm").addEventListener("submit", function (e) {
     e.preventDefault();
     render();
   });
   cat.addEventListener("change", render);
+  if (sort) sort.addEventListener("change", render);
   q.addEventListener("input", render);
   document.getElementById("resetBtn").addEventListener("click", function () {
     q.value = "";
     cat.value = "All";
+    if (sort) sort.value = "newest";
     render();
   });
   render();

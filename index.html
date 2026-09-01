@@ -15,9 +15,10 @@
       href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/styles.css?v=3" />
+    <link rel="stylesheet" href="assets/css/styles.css?v=4" />
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
     <header class="site-header">
       <div class="container">
         <a class="brand" href="index.html">
@@ -52,7 +53,7 @@
         </button>
       </div>
     </header>
-    <main>
+    <main id="main-content">
       <section class="hero hero-split">
         <div class="hero-blob hero-blob-1">
           <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -96,7 +97,7 @@
             </div>
             <div class="btn-group">
               <a class="btn btn-outline" href="find.html">Browse all items</a>
-              <a class="btn btn-ghost" href="contact.html">Report a found item</a>
+              <a class="btn btn-ghost" href="report.html">Report a found item</a>
             </div>
           </div>
           <div class="hero-visual">
@@ -117,16 +118,16 @@
           <div class="stats-divider-top"></div>
           <div class="stats-row" id="statsRow">
             <div class="stat-item">
-              <div class="stat-number" data-target="120">0</div>
+              <div class="stat-number" data-stat="total">0</div>
               <div class="stat-label">Items Found</div>
             </div>
             <div class="stat-item">
-              <div class="stat-number" data-target="85">0</div>
+              <div class="stat-number" data-stat="claimed">0</div>
               <div class="stat-label">Claims Completed</div>
             </div>
             <div class="stat-item">
-              <div class="stat-number" data-target="340">0</div>
-              <div class="stat-label">Students Served</div>
+              <div class="stat-number" data-stat="categories">0</div>
+              <div class="stat-label">Categories</div>
             </div>
           </div>
           <div class="stats-divider-bottom"></div>
@@ -165,6 +166,12 @@
             </p>
           </article>
         </div>
+        <div class="btn-group mt-8">
+          <a class="btn btn-primary" href="find.html">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            Try it now
+          </a>
+        </div>
       </section>
 
       <section class="section container">
@@ -188,10 +195,10 @@
       </div>
     </footer>
     <script src="assets/js/data.js"></script>
-    <script src="assets/js/main.js?v=4"></script>
+    <script src="assets/js/main.js?v=5"></script>
     <script src="assets/js/home.js?v=5"></script>
 
-    <a href="contact.html" class="floating-cta" aria-label="Report a found item">
+    <a href="report.html" class="floating-cta" aria-label="Report a found item">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
       <span>Report Found Item</span>
     </a>
