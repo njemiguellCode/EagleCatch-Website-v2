@@ -69,3 +69,13 @@ ConnectionResetError: [WinError 10054] An existing connection was forcibly close
 ::1 - - [01/Sep/2026 12:29:41] "GET /assets/js/report.js HTTP/1.1" 304 -
 ::1 - - [01/Sep/2026 12:30:21] "GET /report.html HTTP/1.1" 304 -
 ::1 - - [01/Sep/2026 12:30:21] "GET /assets/css/styles.css?v=4 HTTP/1.1" 304 -
+::ffff:192.168.100.234 - - [01/Sep/2026 12:49:18] "GET / HTTP/1.1" 200 -
+::ffff:192.168.100.234 - - [01/Sep/2026 12:49:24] code 404, message File not found
+::ffff:192.168.100.234 - - [01/Sep/2026 12:49:24] "GET /HNAP1/ HTTP/1.1" 404 -
+::ffff:192.168.100.234 - - [01/Sep/2026 12:49:26] code 501, message Unsupported method ('POST')
+::ffff:192.168.100.234 - - [01/Sep/2026 12:49:26] "POST /mcp HTTP/1.1" 501 -
+::ffff:192.168.100.234 - - [01/Sep/2026 12:49:26] "GET / HTTP/1.1" 200 -
+::ffff:192.168.100.234 - - [01/Sep/2026 12:49:26] code 404, message File not found
+::ffff:192.168.100.234 - - [01/Sep/2026 12:49:26] "GET /loginMsg.js HTTP/1.1" 404 -
+::ffff:192.168.100.234 - - [01/Sep/2026 12:49:26] code 404, message File not found
+::ffff:192.168.100.234 - - [01/Sep/2026 12:49:26] "GET /cgi/get.cgi?cmd=home_login HTTP/1.1" 404 -
