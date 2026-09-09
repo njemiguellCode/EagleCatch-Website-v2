@@ -3,6 +3,7 @@
   var empty = document.getElementById("empty");
   var q = document.getElementById("q");
   var cat = document.getElementById("cat");
+  var statusSel = document.getElementById("status");
   var sort = document.getElementById("sort");
   var resultCount = document.getElementById("resultCount");
 
@@ -39,9 +40,17 @@
 
   function render() {
     var all = window.EC.search(q.value, cat.value);
+    if (statusSel && statusSel.value) {
+      all = all.filter(function (it) { return it.status === statusSel.value; });
+    }
     var list = applySort(all);
     results.innerHTML = list.map(window.EC.itemCard).join("");
+    var wasEmpty = empty.hidden;
     empty.hidden = list.length > 0;
+    if (!empty.hidden && wasEmpty) {
+      var t = empty.querySelector(".empty-title");
+      if (t) t.focus({ preventScroll: false });
+    }
     if (resultCount) {
       var total = (window.ITEMS || []).length;
       if (all.length === total) {
@@ -56,6 +65,7 @@
   var params = new URLSearchParams(window.location.search);
   if (params.get("q")) q.value = params.get("q");
   if (params.get("cat")) cat.value = params.get("cat");
+  if (params.get("status") && statusSel) statusSel.value = params.get("status");
   if (params.get("sort") && sort) sort.value = params.get("sort");
 
   document.getElementById("findForm").addEventListener("submit", function (e) {
@@ -63,11 +73,13 @@
     render();
   });
   cat.addEventListener("change", render);
+  if (statusSel) statusSel.addEventListener("change", render);
   if (sort) sort.addEventListener("change", render);
   q.addEventListener("input", render);
   document.getElementById("resetBtn").addEventListener("click", function () {
     q.value = "";
     cat.value = "All";
+    if (statusSel) statusSel.value = "";
     if (sort) sort.value = "newest";
     render();
   });

@@ -159,6 +159,113 @@ window.EC = {
           day: "numeric",
         });
   },
+  setFieldError: function (el, msg) {
+    if (!el) return;
+    var field = el.closest(".field") || el.parentElement;
+    var err = field ? field.querySelector(".field-error") : null;
+    if (msg) {
+      el.setAttribute("aria-invalid", "true");
+      if (!err) {
+        err = document.createElement("p");
+        err.className = "field-error";
+        err.setAttribute("role", "alert");
+        field.appendChild(err);
+      }
+      if (!err.id) err.id = "err-" + (el.id || "field");
+      el.setAttribute("aria-describedby", err.id);
+      err.textContent = msg;
+    } else {
+      el.removeAttribute("aria-invalid");
+      el.removeAttribute("aria-describedby");
+      if (err) err.remove();
+    }
+  },
+  validateForm: function (form) {
+    if (!form) return true;
+    var ok = true;
+    var firstBad = null;
+    var fields = form.querySelectorAll(
+      "input[required], select[required], textarea[required]"
+    );
+    Array.prototype.forEach.call(fields, function (el) {
+      var val = (el.value || "").trim();
+      var msg = "";
+      if (!val) msg = "This field is required.";
+      else if (
+        el.type === "email" &&
+        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)
+      )
+        msg = "Please enter a valid email address.";
+      window.EC.setFieldError(el, msg);
+      if (msg) {
+        ok = false;
+        if (!firstBad) firstBad = el;
+      }
+    });
+    if (firstBad) firstBad.focus();
+    return ok;
+  },
+  wireValidation: function (form) {
+    if (!form) return;
+    form.addEventListener("input", function (e) {
+      var t = e.target;
+      if (t && t.getAttribute && t.getAttribute("aria-invalid") === "true") {
+        window.EC.setFieldError(t, "");
+      }
+    });
+  },
+  deliverForm: function (to, subject, fields) {
+    var payload = {
+      _subject: subject,
+      _template: "table",
+      _captcha: "false"
+    };
+    fields.forEach(function (f) {
+      payload[f[0]] = f[1];
+      if (f[2] === "replyto") payload._replyto = f[1];
+    });
+    return fetch("https://formsubmit.co/ajax/" + encodeURIComponent(to), {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify(payload)
+    }).then(function (r) {
+      return r.json().then(function (data) {
+        var ok =
+          r.ok &&
+          (data.success === true || data.success === "true");
+        if (!ok) {
+          throw new Error(data.message || "The form service rejected the submission.");
+        }
+        return data;
+      });
+    });
+  },
+  mailtoLink: function (to, subject, fields) {
+    var body = fields
+      .map(function (f) { return f[0] + ": " + f[1]; })
+      .join("\n");
+    return (
+      "mailto:" + to +
+      "?subject=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(body)
+    );
+  },
+  setSending: function (form, sending) {
+    var btn = form ? form.querySelector('button[type="submit"]') : null;
+    if (!btn) return;
+    if (sending) {
+      btn.setAttribute("data-label", btn.textContent.trim());
+      btn.textContent = "Sending\u2026";
+      btn.disabled = true;
+  } else {
+      var label = btn.getAttribute("data-label");
+      btn.textContent = label || "Submit";
+      btn.disabled = false;
+    }
+  },
   pinIcon: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;opacity:.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
   chevronIcon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.4;transition:opacity .2s"><path d="M9 18l6-6-6-6"/></svg>',
   itemCard: function (it) {
@@ -168,6 +275,9 @@ window.EC = {
       '<a class="card card-hover item-card ' + stripClass + '" href="item.html?id=' +
       encodeURIComponent(it.id) +
       '">' +
+      (it.photo
+        ? '<img class="item-thumb" src="' + esc(it.photo) + '" alt="" loading="lazy" />'
+        : "") +
       '<div class="row"><span class="item-id">' +
       esc(it.id) +
       "</span>" +

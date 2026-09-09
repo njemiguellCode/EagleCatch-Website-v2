@@ -2,7 +2,7 @@
   var form = document.getElementById("reportForm");
   if (!form) return;
   var status = document.getElementById("formStatus");
-  var TO = "eaglecatch@aski.edu.ph";
+  var TO = "nickoseser@gmail.com";
 
   // Set default date to today
   var dateInput = document.getElementById("itemDate");
@@ -11,8 +11,11 @@
     dateInput.value = today;
   }
 
+  window.EC.wireValidation(form);
+
   form.addEventListener("submit", function (e) {
     e.preventDefault();
+    if (!window.EC.validateForm(form)) return;
 
     var name = document.getElementById("reporterName").value.trim();
     var email = document.getElementById("reporterEmail").value.trim();
@@ -23,34 +26,39 @@
     var date = document.getElementById("itemDate").value;
     var notes = document.getElementById("reporterNotes").value.trim();
 
-    if (!name || !email || !itemName || !category || !description || !location || !date) return;
-
     var subject = "[FOUND] " + itemName + " \u2014 " + category;
+    var fields = [
+      ["Item name", itemName],
+      ["Category", category],
+      ["Description", description],
+      ["Location found", location],
+      ["Date found", date],
+      ["Additional notes", notes || "\u2014"],
+      ["Reporter name", name, "replyto"],
+      ["Reporter email", email]
+    ];
 
-    var body =
-      "FOUND ITEM REPORT\n" +
-      "================================\n\n" +
-      "ITEM DETAILS\n" +
-      "Name:        " + itemName + "\n" +
-      "Category:    " + category + "\n" +
-      "Description: " + description + "\n" +
-      "Location:    " + location + "\n" +
-      "Date Found:  " + date + "\n" +
-      (notes ? "\nADDITIONAL NOTES\n" + notes + "\n" : "") +
-      "\n================================\n" +
-      "REPORTED BY\n" +
-      "Name:  " + name + "\n" +
-      "Email: " + email + "\n";
+    window.EC.setSending(form, true);
+    status.hidden = true;
 
-    var mailto =
-      "mailto:" + TO +
-      "?subject=" + encodeURIComponent(subject) +
-      "&body=" + encodeURIComponent(body);
-
-    window.location.href = mailto;
-
-    status.hidden = false;
-    status.innerHTML =
-      '<strong style="color:var(--gold)">Report submitted!</strong> Your email client should open with the details pre-filled. Send the email to complete your report. The team will review it and add the item to the Find board within 24 hours.';
+    window.EC.deliverForm(TO, subject, fields)
+      .then(function () {
+        form.reset();
+        if (dateInput) {
+          dateInput.value = new Date().toISOString().split("T")[0];
+        }
+        status.hidden = false;
+        status.innerHTML =
+          '<strong style="color:var(--gold)">Report submitted!</strong> It was delivered to the EagleCatch team. They will review it and add the item to the Find board within 24 hours. Please hand the item to the SSG desk if you have not already.';
+      })
+      .catch(function () {
+        status.hidden = false;
+        status.innerHTML =
+          '<strong style="color:var(--destructive)">We could not send your report automatically.</strong> ' +
+          '<a href="' + window.EC.mailtoLink(TO, subject, fields) + '">Click here to send it with your email app instead</a>.';
+      })
+      .then(function () {
+        window.EC.setSending(form, false);
+      });
   });
 })();

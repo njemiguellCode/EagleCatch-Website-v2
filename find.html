@@ -18,7 +18,8 @@
       href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/styles.css?v=4" />
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+    <link rel="stylesheet" href="assets/css/styles.css?v=5" />
   </head>
   <body>
     <a href="#main-content" class="skip-link">Skip to content</a>
@@ -39,7 +40,7 @@
         <nav class="nav" id="nav">
           <a href="index.html">Home</a
           ><a href="find.html" class="active">Find</a
-          ><a href="about.html">About</a><a href="contact.html">Contact</a>
+          ><a href="about.html">About</a><a href="user-manual.html">Manual</a><a href="contact.html">Contact</a>
         </nav>
         <button
           class="nav-toggle"
@@ -143,6 +144,15 @@
             <select class="select" id="cat"></select>
           </div>
           <div class="field">
+            <label for="status">Status</label>
+            <select class="select" id="status">
+              <option value="">Any status</option>
+              <option value="Available">Available</option>
+              <option value="Found">Found</option>
+              <option value="Claimed">Claimed</option>
+            </select>
+          </div>
+          <div class="field">
             <label for="sort">Sort by</label>
             <select class="select" id="sort">
               <option value="newest">Newest first</option>
@@ -159,15 +169,24 @@
         <p class="text-muted" id="resultCount" style="margin-bottom:0.75rem;font-size:0.9rem"></p>
         <div class="grid grid-3 mt-8" id="results"></div>
         <div class="empty" id="empty" hidden>
-          <h3 style="margin-bottom:0.5rem">No items matched your search.</h3>
-          <p class="text-muted" style="margin-bottom:1.5rem">Try different keywords, check your spelling, or browse by category.</p>
-          <div class="btn-group">
+          <div class="empty-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="M8 11h6"/></svg>
+          </div>
+          <h3 class="empty-title" tabindex="-1">No items matched your search.</h3>
+          <p class="text-muted">Try different keywords, check your spelling, or browse by category.</p>
+          <div class="empty-actions">
+            <a class="btn btn-primary" href="find.html">Browse all items</a>
             <a class="btn btn-outline" href="report.html">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
               Report a found item
             </a>
             <a class="btn btn-ghost" href="contact.html">Lost something? Contact us</a>
+            <a class="btn btn-ghost" href="user-manual.html">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              Read the manual
+            </a>
           </div>
+          <p class="empty-hint">Tip: Item IDs look like ASKI-000123 — you can paste the number alone and we'll match it.</p>
         </div>
       </section>
     </main>
@@ -180,9 +199,9 @@
         >
       </div>
     </footer>
-    <script src="assets/js/data.js"></script>
-    <script src="assets/js/main.js?v=5"></script>
-    <script src="assets/js/find.js?v=6"></script>
+    <script src="assets/js/data.js?v=2"></script>
+    <script src="assets/js/main.js?v=7"></script>
+    <script src="assets/js/find.js?v=8"></script>
 
     <a
       href="report.html"

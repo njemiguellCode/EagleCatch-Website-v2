@@ -18,12 +18,57 @@
   })[0];
 
   if (!it) {
+    document.title = "Item not found — EagleCatch";
+    var shown = id.trim();
+    var suggestions = [];
+    var digits = shown.replace(/\D/g, "");
+    if (digits.length >= 3) {
+      suggestions = (window.ITEMS || []).filter(function (x) {
+        return x.id.replace(/\D/g, "").indexOf(digits) > -1;
+      }).slice(0, 3);
+    }
+    if (!suggestions.length && shown) {
+      var low = shown.toLowerCase();
+      suggestions = (window.ITEMS || []).filter(function (x) {
+        return x.name.toLowerCase().indexOf(low) > -1;
+      }).slice(0, 3);
+    }
+    var sugHtml = "";
+    if (suggestions.length) {
+      sugHtml =
+        '<p class="empty-hint">Were you looking for one of these?</p>' +
+        '<div class="empty-actions">' +
+        suggestions.map(function (s) {
+          return (
+            '<a class="btn btn-outline" href="item.html?id=' + encodeURIComponent(s.id) + '">' +
+            '<span class="item-id">' + esc(s.id) + "</span>&nbsp;" + esc(s.name) +
+            "</a>"
+          );
+        }).join("") +
+        "</div>";
+    }
     root.innerHTML =
-      '<div class="empty"><h1>Item not found</h1>' +
-      '<p>We could not find an item with the ID “' +
-      esc(id || "—") +
-      '”.</p>' +
-      '<a class="btn btn-primary" href="' + backUrl + '">Back to search</a></div>';
+      '<div class="empty">' +
+      '<div class="empty-icon" aria-hidden="true">' +
+      '<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="M8 11h6"/></svg>' +
+      "</div>" +
+      '<h1 class="empty-title">' + (shown ? "Item not found" : "No item ID given") + "</h1>" +
+      "<p>" +
+      (shown
+        ? "We could not find an item with the ID \u201C" + esc(shown) + "\u201D. Double-check the ID or search the board."
+        : "This page needs an item ID. Browse the board to find what you're looking for.") +
+      "</p>" +
+      '<div class="empty-actions">' +
+      '<a class="btn btn-primary" href="' + backUrl + '">Back to search</a>' +
+      '<a class="btn btn-outline" href="report.html">Report a found item</a>' +
+      "</div>" +
+      sugHtml +
+      "</div>";
+    var notFoundTitle = root.querySelector(".empty-title");
+    if (notFoundTitle) notFoundTitle.setAttribute("tabindex", "-1");
+    root.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") window.location.href = backUrl;
+    });
     return;
   }
 
@@ -77,6 +122,9 @@
   root.innerHTML =
     '<a class="btn btn-ghost" href="' + backUrl + '">← Back to search</a>' +
     '<div class="card mt-8">' +
+    (it.photo
+      ? '<img class="item-photo" src="' + esc(it.photo) + '" alt="Photo of ' + esc(it.name) + '" />'
+      : "") +
     '<div class="row" style="display:flex;justify-content:space-between;align-items:center;gap:1rem">' +
     '<span class="item-id">' + esc(it.id) + '</span>' +
     '<span class="' + window.EC.badgeClass(it.status) + '">' + esc(it.status) + '</span>' +
@@ -103,7 +151,7 @@
   var claimWrap = document.getElementById("claimFormWrap");
   var claimForm = document.getElementById("claimForm");
   var claimStatus = document.getElementById("claimStatus");
-  var TO = "eaglecatch@aski.edu.ph";
+  var TO = "nickoseser@gmail.com";
 
   if (claimBtn && claimWrap) {
     claimBtn.addEventListener("click", function () {
@@ -116,8 +164,10 @@
   }
 
   if (claimForm) {
+    window.EC.wireValidation(claimForm);
     claimForm.addEventListener("submit", function (e) {
       e.preventDefault();
+      if (!window.EC.validateForm(claimForm)) return;
       var name = document.getElementById("claimName").value.trim();
       var email = document.getElementById("claimEmail").value.trim();
       var studentId = document.getElementById("claimStudentId").value.trim();
@@ -126,33 +176,38 @@
       if (!name || !email || !studentId || !reason) return;
 
       var subject = "[CLAIM] " + it.name + " (" + it.id + ")";
-            var body =
-        "ITEM CLAIM\n" +
-        "================================\n\n" +
-        "ITEM DETAILS\n" +
-        "ID:          " + it.id + "\n" +
-        "Name:        " + it.name + "\n" +
-        "Category:    " + it.category + "\n" +
-        "Location:    " + it.location + "\n" +
-        "Date Found:  " + it.dateFound + "\n" +
-        "\n================================\n" +
-        "CLAIMANT DETAILS\n" +
-        "Name:        " + name + "\n" +
-        "Email:       " + email + "\n" +
-        "Student ID:  " + studentId + "\n" +
-        "\nWHY IS THIS YOURS?\n" +
-        reason + "\n";
+      var fields = [
+        ["Item ID", it.id],
+        ["Item name", it.name],
+        ["Category", it.category],
+        ["Found at", it.location],
+        ["Date found", it.dateFound],
+        ["Claimant name", name, "replyto"],
+        ["Claimant email", email],
+        ["Student ID", studentId],
+        ["Why is this yours?", reason]
+      ];
 
-      var mailto =
-        "mailto:" + TO +
-        "?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(body);
+      window.EC.setSending(claimForm, true);
+      claimStatus.hidden = true;
 
-      window.location.href = mailto;
-
-      claimStatus.hidden = false;
-      claimStatus.innerHTML =
-        '<strong style="color:var(--gold)">Claim submitted!</strong> Your email client should open with the details pre-filled. Send the email to complete your claim. The team will verify and respond within 24 hours.';
+      window.EC.deliverForm(TO, subject, fields)
+        .then(function () {
+          claimForm.reset();
+          claimStatus.hidden = false;
+          claimStatus.innerHTML =
+            '<strong style="color:var(--gold)">Claim submitted!</strong> It was delivered to the EagleCatch team. They will verify your claim and respond to <strong>' +
+            esc(email) + "</strong> within 24 hours.";
+        })
+        .catch(function () {
+          claimStatus.hidden = false;
+          claimStatus.innerHTML =
+            '<strong style="color:var(--destructive)">We could not send your claim automatically.</strong> ' +
+            '<a href="' + window.EC.mailtoLink(TO, subject, fields) + '">Click here to send it with your email app instead</a>.';
+        })
+        .then(function () {
+          window.EC.setSending(claimForm, false);
+        });
     });
   }
 })();

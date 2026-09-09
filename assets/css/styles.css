@@ -911,6 +911,85 @@ img {
   border-radius: 9999px;
 }
 
+/* ---------- Inline field validation ---------- */
+.field-error {
+  margin: 0.4rem 0 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--destructive);
+}
+.input[aria-invalid="true"],
+.select[aria-invalid="true"],
+.textarea[aria-invalid="true"] {
+  border-color: var(--destructive);
+  box-shadow: 0 0 0 3px
+    color-mix(in oklab, var(--destructive) 18%, transparent);
+}
+
+/* ---------- User manual ---------- */
+.manual-step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 1.25rem;
+  align-items: center;
+}
+.manual-step .step-number {
+  grid-row: 1 / span 2;
+  margin-bottom: 0;
+}
+.manual-step h3 {
+  margin: 0;
+}
+.manual-step p {
+  margin: 0.25rem 0 0;
+}
+.faq-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--card);
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+}
+.faq-item summary {
+  cursor: pointer;
+  padding: 1rem 1.25rem;
+  font-weight: 600;
+  font-family: var(--font-display);
+  list-style: none;
+  position: relative;
+  padding-right: 3rem;
+}
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.faq-item summary::after {
+  content: "+";
+  position: absolute;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--muted-foreground);
+  transition: transform 0.2s ease;
+}
+.faq-item[open] summary::after {
+  content: "\2013";
+  color: var(--gold);
+}
+.faq-item[open] summary {
+  color: var(--gold);
+}
+.faq-item p {
+  margin: 0;
+  padding: 0 1.25rem 1.125rem;
+  color: var(--muted-foreground);
+}
+.faq-item a {
+  color: var(--accent);
+}
+
 /* ---------- Search wrapper + autocomplete ---------- */
 .search-wrapper {
   position: relative;
@@ -1078,6 +1157,27 @@ img {
   border-top: 4px solid transparent;
   transition: var(--transition-smooth);
 }
+.item-thumb {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  background: color-mix(in oklab, var(--muted) 60%, transparent);
+  margin-bottom: 0.25rem;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .item-card:hover .item-thumb {
+    transform: scale(1.02);
+  }
+}
+.item-photo {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  background: color-mix(in oklab, var(--muted) 60%, transparent);
+  margin-bottom: 1rem;
+}
 .item-card.strip-available {
   border-top-color: var(--cyan-accent);
 }
@@ -1151,6 +1251,54 @@ img {
   text-align: center;
   color: var(--muted-foreground);
   padding: 3rem 1rem;
+}
+.empty-icon {
+  display: inline-flex;
+  width: 3.5rem;
+  height: 3.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: color-mix(in oklab, var(--muted) 55%, transparent);
+  color: var(--muted-foreground);
+  margin-bottom: 1rem;
+}
+.empty .empty-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0 0 0.5rem;
+}
+.empty .empty-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+.empty .empty-hint {
+  font-size: 0.85rem;
+  margin: 2.25rem 0 0;
+}
+
+/* ---------- Focus visibility (keyboard) ---------- */
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring) 35%, transparent);
+}
+.btn[disabled] {
+  opacity: 0.6;
+  cursor: wait;
+}
+.input:focus-visible,
+.textarea:focus-visible,
+.select:focus-visible {
+  outline: none;
 }
 .avatar {
   width: 3rem;

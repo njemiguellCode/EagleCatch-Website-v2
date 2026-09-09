@@ -1,6 +1,7 @@
 window.ITEMS = [
   {
     id: "ASKI-000123",
+    photo: "https://picsum.photos/seed/ASKI-000123/640/480",
     name: "Black Casio Wristwatch",
     category: "Accessories",
     status: "Available",
@@ -16,6 +17,7 @@ window.ITEMS = [
   },
   {
     id: "ASKI-000124",
+    photo: "https://picsum.photos/seed/ASKI-000124/640/480",
     name: "Blue Hydro Flask Tumbler",
     category: "Bottles",
     status: "Available",
@@ -30,6 +32,7 @@ window.ITEMS = [
   },
   {
     id: "ASKI-000125",
+    photo: "https://picsum.photos/seed/ASKI-000125/640/480",
     name: "Scientific Calculator",
     category: "School Supplies",
     status: "Claimed",
@@ -44,6 +47,7 @@ window.ITEMS = [
   },
   {
     id: "ASKI-000126",
+    photo: "https://picsum.photos/seed/ASKI-000126/640/480",
     name: "Grey Hooded Jacket",
     category: "Clothing",
     status: "Available",
@@ -58,6 +62,7 @@ window.ITEMS = [
   },
   {
     id: "ASKI-000127",
+    photo: "https://picsum.photos/seed/ASKI-000127/640/480",
     name: "Silver Framed Eyeglasses",
     category: "Accessories",
     status: "Found",
@@ -71,6 +76,7 @@ window.ITEMS = [
   },
   {
     id: "ASKI-000128",
+    photo: "https://picsum.photos/seed/ASKI-000128/640/480",
     name: "USB Flash Drive 32GB",
     category: "Electronics",
     status: "Available",

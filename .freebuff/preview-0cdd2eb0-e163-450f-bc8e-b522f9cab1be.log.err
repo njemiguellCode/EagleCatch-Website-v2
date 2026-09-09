@@ -1,81 +1,117 @@
-----------------------------------------
-Exception occurred during processing of request from ('::ffff:127.0.0.1', 60469, 0, 0)
-Traceback (most recent call last):
-  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\socketserver.py", line 697, in process_request_thread
-    self.finish_request(request, client_address)
-    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\http\server.py", line 1422, in finish_request
-    self.RequestHandlerClass(request, client_address, self,
-    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-                             directory=args.directory)
-                             ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\http\server.py", line 732, in __init__
-    super().__init__(*args, **kwargs)
-    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\socketserver.py", line 766, in __init__
-    self.handle()
-    ~~~~~~~~~~~^^
-  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\http\server.py", line 496, in handle
-    self.handle_one_request()
-    ~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\http\server.py", line 464, in handle_one_request
-    self.raw_requestline = self.rfile.readline(65537)
-                           ~~~~~~~~~~~~~~~~~~~^^^^^^^
-  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\socket.py", line 725, in readinto
-    return self._sock.recv_into(b)
-           ~~~~~~~~~~~~~~~~~~~~^^^
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-----------------------------------------
-::1 - - [01/Sep/2026 12:24:53] "GET / HTTP/1.1" 200 -
-----------------------------------------
-Exception occurred during processing of request from ('::ffff:127.0.0.1', 60471, 0, 0)
-Traceback (most recent call last):
-  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\socketserver.py", line 697, in process_request_thread
-    self.finish_request(request, client_address)
-    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\http\server.py", line 1422, in finish_request
-    self.RequestHandlerClass(request, client_address, self,
-    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-                             directory=args.directory)
-                             ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\http\server.py", line 732, in __init__
-    super().__init__(*args, **kwargs)
-    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\socketserver.py", line 766, in __init__
-    self.handle()
-    ~~~~~~~~~~~^^
-  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\http\server.py", line 496, in handle
-    self.handle_one_request()
-    ~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\http\server.py", line 464, in handle_one_request
-    self.raw_requestline = self.rfile.readline(65537)
-                           ~~~~~~~~~~~~~~~~~~~^^^^^^^
-::1 - - [01/Sep/2026 12:24:53] "GET / HTTP/1.1" 200 -
-  File "C:\Users\nicko\AppData\Local\Python\pythoncore-3.14-64\Lib\socket.py", line 725, in readinto
-    return self._sock.recv_into(b)
-           ~~~~~~~~~~~~~~~~~~~~^^^
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-----------------------------------------
-::1 - - [01/Sep/2026 12:24:55] "GET / HTTP/1.1" 304 -
-::1 - - [01/Sep/2026 12:25:06] "GET /index.html HTTP/1.1" 304 -
-::1 - - [01/Sep/2026 12:25:35] "GET /assets/css/styles.css HTTP/1.1" 200 -
-::1 - - [01/Sep/2026 12:26:14] "GET /index.html HTTP/1.1" 200 -
-::1 - - [01/Sep/2026 12:26:14] "GET /assets/css/styles.css?v=4 HTTP/1.1" 200 -
-::1 - - [01/Sep/2026 12:26:14] "GET /assets/js/main.js?v=5 HTTP/1.1" 200 -
-::1 - - [01/Sep/2026 12:28:47] "GET /contact.html HTTP/1.1" 200 -
-::1 - - [01/Sep/2026 12:28:47] "GET /assets/js/main.js?v=5 HTTP/1.1" 304 -
-::1 - - [01/Sep/2026 12:28:47] "GET /assets/css/styles.css?v=4 HTTP/1.1" 304 -
-::1 - - [01/Sep/2026 12:29:41] "GET /report.html HTTP/1.1" 200 -
-::1 - - [01/Sep/2026 12:29:41] "GET /assets/js/report.js HTTP/1.1" 304 -
-::1 - - [01/Sep/2026 12:30:21] "GET /report.html HTTP/1.1" 304 -
-::1 - - [01/Sep/2026 12:30:21] "GET /assets/css/styles.css?v=4 HTTP/1.1" 304 -
-::ffff:192.168.100.234 - - [01/Sep/2026 12:49:18] "GET / HTTP/1.1" 200 -
-::ffff:192.168.100.234 - - [01/Sep/2026 12:49:24] code 404, message File not found
-::ffff:192.168.100.234 - - [01/Sep/2026 12:49:24] "GET /HNAP1/ HTTP/1.1" 404 -
-::ffff:192.168.100.234 - - [01/Sep/2026 12:49:26] code 501, message Unsupported method ('POST')
-::ffff:192.168.100.234 - - [01/Sep/2026 12:49:26] "POST /mcp HTTP/1.1" 501 -
-::ffff:192.168.100.234 - - [01/Sep/2026 12:49:26] "GET / HTTP/1.1" 200 -
-::ffff:192.168.100.234 - - [01/Sep/2026 12:49:26] code 404, message File not found
-::ffff:192.168.100.234 - - [01/Sep/2026 12:49:26] "GET /loginMsg.js HTTP/1.1" 404 -
-::ffff:192.168.100.234 - - [01/Sep/2026 12:49:26] code 404, message File not found
-::ffff:192.168.100.234 - - [01/Sep/2026 12:49:26] "GET /cgi/get.cgi?cmd=home_login HTTP/1.1" 404 -
+127.0.0.1 - - [09/Sep/2026 10:53:41] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 10:53:45] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 10:53:45] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 10:53:45] "GET /assets/images/eaglecatch-logo.png HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 10:53:45] "GET /assets/css/styles.css?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 10:53:45] "GET /assets/images/logo.png HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 10:53:45] "GET /assets/js/data.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 10:53:45] "GET /assets/js/main.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 10:53:45] "GET /assets/js/home.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 10:53:52] "GET /find.html?status=Available HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 10:53:52] "GET /assets/js/find.js?v=6 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 10:54:19] "GET /report.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 10:54:19] "GET /assets/css/styles.css?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 10:54:19] "GET /assets/js/report.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 10:54:19] "GET /assets/js/main.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 10:54:44] "GET /contact.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 10:54:44] "GET /assets/js/contact.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 10:54:58] "GET /assets/images/favicon.svg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 10:54:58] "GET /find.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 10:55:39] "GET /item.html?id=ASKI-000123 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 10:55:40] "GET /assets/css/styles.css?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 10:55:40] "GET /assets/js/main.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 10:55:40] "GET /assets/js/item.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 10:56:05] "GET /find.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 10:56:05] "GET /assets/js/find.js?v=6 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:12:35] "GET /assets/js/report.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:12:35] "GET /user-manual.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:12:40] "GET /user-manual.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:12:40] "GET /assets/js/main.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:12:40] "GET /assets/css/styles.css?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:16:12] "GET /item.html?id=ASKI-99999 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:16:12] "GET /assets/css/styles.css?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:16:12] "GET /assets/js/main.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:16:12] "GET /assets/js/item.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:16:32] "GET /item.html?id=000123 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:16:32] "GET /assets/css/styles.css?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:16:32] "GET /assets/js/item.js HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:16:45] "GET /item.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:16:45] "GET /assets/css/styles.css?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:16:45] "GET /assets/js/item.js HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:17:04] "GET /find.html?q=zzzznothing HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:17:04] "GET /assets/css/styles.css?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:17:04] "GET /assets/js/find.js?v=6 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:21:39] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:21:55] "GET /report.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:21:55] "GET /assets/css/styles.css?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:21:55] "GET /assets/js/main.js?v=6 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:21:55] "GET /assets/js/report.js?v=7 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:24:33] "GET /find.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:24:33] "GET /assets/css/styles.css?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:24:33] "GET /assets/js/main.js?v=7 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:24:33] "GET /assets/js/find.js?v=8 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:25:08] "GET /assets/js/data.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:25:16] "GET /find.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:25:16] "GET /assets/css/styles.css?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:25:16] "GET /assets/js/data.js?v=2 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:25:16] "GET /assets/js/main.js?v=7 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:26:43] "GET /item.html?id=ASKI-000124 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:26:43] "GET /assets/css/styles.css?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:26:43] "GET /assets/js/data.js?v=2 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:26:43] "GET /assets/js/main.js?v=7 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:26:43] "GET /assets/js/item.js?v=8 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:27:16] "GET /item.html?id=ASKI-000124 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:27:16] "GET /assets/css/styles.css?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:27:16] "GET /assets/js/data.js?v=2 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:27:16] "GET /assets/js/main.js?v=7 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:27:16] "GET /assets/js/item.js?v=8 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:28:07] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:28:07] "GET /assets/css/styles.css?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:28:07] "GET /assets/js/data.js?v=2 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:28:07] "GET /assets/js/main.js?v=7 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:29:25] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:29:28] "GET /find.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:29:28] "GET /assets/css/styles.css?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:29:28] "GET /assets/js/data.js?v=2 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:29:28] "GET /assets/js/main.js?v=7 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:29:28] "GET /assets/js/find.js?v=8 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:29:44] "GET /item.html?id=ASKI-000123 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:29:44] "GET /assets/js/item.js?v=9 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:29:53] "GET /assets/js/item.js?v=9 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:29:55] "GET /user-manual.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:29:55] "GET /about.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:29:57] "GET /contact.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:29:57] "GET /assets/js/contact.js?v=8 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:31:07] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:31:07] "GET /assets/css/styles.css?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:31:07] "GET /assets/js/data.js?v=2 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:31:07] "GET /assets/js/main.js?v=7 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:31:23] "GET /find.html?q=qqqnothing HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:31:23] "GET /assets/js/find.js?v=8 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:33:37] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:33:37] "GET /find.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:33:37] "GET /item.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:33:37] "GET /report.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:33:37] "GET /about.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:33:37] "GET /contact.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:33:37] "GET /user-manual.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:33:37] "GET /assets/images/favicon.svg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:34:16] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:34:16] "GET /assets/css/styles.css?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:34:16] "GET /assets/js/data.js?v=2 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:34:16] "GET /assets/js/main.js?v=7 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:36:26] "GET /report.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:36:26] "GET /assets/css/styles.css?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:36:26] "GET /assets/js/main.js?v=7 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:36:26] "GET /assets/js/report.js?v=7 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:37:08] "GET /item.html?id=ASKI-000126 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:37:08] "GET /assets/js/data.js?v=2 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:37:08] "GET /assets/js/item.js?v=9 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:37:56] "GET /contact.html?item=ASKI-000125 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Sep/2026 11:37:56] "GET /assets/css/styles.css?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:37:56] "GET /assets/js/main.js?v=7 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:37:56] "GET /assets/js/contact.js?v=8 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:39:55] "GET /report.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:39:55] "GET /assets/css/styles.css?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:39:55] "GET /assets/js/main.js?v=7 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Sep/2026 11:39:55] "GET /assets/js/report.js?v=7 HTTP/1.1" 304 -
